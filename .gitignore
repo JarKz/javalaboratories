@@ -1,0 +1,13 @@
+#ignore bulid folder
+build
+
+#ignore gralde folder
+.gradle
+
+#ignore IDE folders
+.vscode
+.idea
+.settings
+
+#ignore system files
+.DS_Store
