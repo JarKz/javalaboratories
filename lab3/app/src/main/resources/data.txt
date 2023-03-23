@@ -1,0 +1,153 @@
+Abiturient
+id 324
+firstName Alexander
+lastName Regin
+patronymic Sergeevich
+homeAddress
+country Belarus
+city Mogilev
+street Pushkina
+home 42
+appartements 33
+postCode 223460
+endHomeAddress
+phoneNumber 375-29-1235682
+grades
+algebra 6
+geometry 5
+geography 4
+history 7
+belarussian 7
+russian 8
+french 5
+biology 4
+informatic 7
+endGrades
+
+Abiturient
+id 328
+firstName Nikolay
+lastName Balben
+patronymic Alexeevich
+homeAddress
+country Belarus
+city Minsk
+street Nekrasova
+home 22
+appartements 137
+postCode 222054
+endHomeAddress
+phoneNumber 375-33-2346245
+grades
+algebra 8
+geometry 7
+history 6
+geography 4
+belarussian 5
+russian 7
+english 7
+biology 6
+informatic 5
+endGrades
+
+Abiturient
+id 125
+firstName Vasilev
+lastName Alemand
+patronymic Ivanov
+homeAddress
+country Russia
+city Moscow
+street Albena
+home 10
+appartements 19
+postCode 123565
+endHomeAddress
+phoneNumber 7-914-3242342
+grades
+algebra 5
+geometry 8
+history 9
+geography 4
+russian 7
+english 7
+biology 6
+informatic 6
+endGrades
+
+Abiturient
+id 269
+firstName Ivan
+lastName Ephrejtorovich
+patronymic Victorovich
+homeAddress
+country Belarus
+city Vitebsk
+street Mikhalkova
+home 132
+appartements 1
+postCode 223460
+endHomeAddress
+phoneNumber 375-44-2346992
+grades
+algebra 3
+geometry 2
+history 5
+geography 4
+russian 4
+english 3
+biology 3
+informatic 4
+endGrades
+
+Abiturient
+id 269
+firstName Ivan
+lastName Ephrejtorovich
+patronymic Victorovich
+homeAddress
+country Belarus
+city Vitebsk
+street Mikhalkova
+home 132
+appartements 1
+postCode 223460
+endHomeAddress
+phoneNumber 375-44-2346992
+grades
+algebra 3
+geometry 2
+history 5
+geography 4
+belarussian 6
+russian 6
+german 7
+biology 5
+informatic 7
+endGrades
+
+Abiturient
+id 640
+firstName Sergey
+lastName Pokladok
+patronymic Mikhailovich
+homeAddress
+country Belarus
+city Grodno
+street Kolotushkina
+home 33
+appartements 12
+postCode 223245
+endHomeAddress
+phoneNumber 375-29-2840123
+grades
+algebra 5
+geometry 5
+history 3
+geography 5
+belarussian 7
+russian 8
+english 7
+biology 5
+informatic 4
+endGrades

@@ -1,0 +1,37 @@
+
+plugins {
+    // Apply the application plugin to add support for building a CLI application in Java.
+    id 'application'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit test framework.
+    testImplementation 'junit:junit:4.13.2'
+
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // Logging
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'jarkz.lab3.App'
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class' : 'jarkz.lab3.App'
+	}
+    //Fat jar (with dependencies)
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+    }
+}
