@@ -9,6 +9,6 @@ Create list of objects. Output to console:
 grades (also output full list of abiturients having semi-pass
 score)."
 
-# Currenct completion
+# Current completion
 
 ✅ Completed!
