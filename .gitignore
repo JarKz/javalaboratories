@@ -11,3 +11,6 @@ build
 
 #ignore system files
 .DS_Store
+
+#ignore build files
+bin/
