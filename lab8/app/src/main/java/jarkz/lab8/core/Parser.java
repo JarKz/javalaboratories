@@ -35,11 +35,6 @@ import jarkz.lab8.document.Text;
  */
 public class Parser {
 
-	// private final String CR_PATTERN = "\\n";
-	// private final String CR_UNIVERSAL_PATTERN = "(.*)?\\n(.*)?";
-	private final String CR_PATTERN = "<CR>";
-	private final String CR_UNIVERSAL_PATTERN = "(.*)?<CR>(.*)?";
-
 	private final String resourceName;
 
 	/**
@@ -200,11 +195,10 @@ public class Parser {
 
 				if (containsTrailingHyphen(line)) {
 					bufferText += removeTrailingHyphen(line);
-				} else if (matchesCarriageReturnSymbol(line)) {
-					String[] splittedLine = line.split(CR_PATTERN, 2);
-					currentParagraphText += bufferText + splittedLine[0];
+				} else if (startsWithWhitespace(line) && !currentParagraphText.isBlank()) {
+					currentParagraphText += bufferText;
 					paragraphs.add(new Paragraph(currentParagraphText));
-					currentParagraphText = splittedLine[1];
+					currentParagraphText = line;
 					bufferText = "";
 				} else {
 					currentParagraphText += bufferText + line;
@@ -226,8 +220,8 @@ public class Parser {
 	 * @param line as String
 	 * @return `true` if matches carriage return symbol, otherwise `false`
 	 */
-	private boolean matchesCarriageReturnSymbol(String line) {
-		return line.matches(CR_UNIVERSAL_PATTERN);
+	private boolean startsWithWhitespace(String line) {
+		return line.startsWith(" ") || line.startsWith("\t");
 	}
 
 	/**

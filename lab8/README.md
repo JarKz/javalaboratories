@@ -72,6 +72,7 @@ Template:
 
 Important things:
  - empty line is separator between objects which saying Parser class how do it;
+ - every new paragraph must starts with whitespaces or tabulation(s).
  - one line must be not larger than 200 sybmols.
 Text will be placed in `/resources` directory.
 
