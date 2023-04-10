@@ -1,6 +1,10 @@
 package jarkz.lab10.core;
 
+/**
+ * Signals that some errors occurred during formatting.
+ */
 public class FormatException extends Exception {
+
 	public FormatException() {
 		super();
 	}

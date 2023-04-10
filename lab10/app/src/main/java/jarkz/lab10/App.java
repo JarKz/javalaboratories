@@ -1,12 +1,13 @@
 package jarkz.lab10;
 
-import java.io.IOException;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.strobel.decompiler.DecompilerSettings;
 
 import jarkz.lab10.core.ClassDecompiler;
+import jarkz.lab10.core.ClassLoaderException;
+import jarkz.lab10.core.FileCreationException;
 import jarkz.lab10.core.FileDeletionException;
 import jarkz.lab10.core.FormatException;
 import jarkz.lab10.core.Formatter;
@@ -23,11 +24,7 @@ public class App {
 			decompiler.decompile(paths);
 			paths = paths.stream().map(p -> p.replaceAll(".class$", ".java")).collect(Collectors.toSet());
 			formatter.format(paths);
-		} catch (FileDeletionException e) {
-			e.printStackTrace();
-		} catch (FormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (FileDeletionException | FormatException | ClassLoaderException | FileCreationException e) {
 			e.printStackTrace();
 		}
 	}

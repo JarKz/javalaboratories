@@ -30,10 +30,12 @@ Output files must be placed in directory `/output` and in this directory must be
 
 ## Exception classes
 
-* FileDeletionException (Exception) - upon attempt deleting some file (if it's exists!) and result are false.
+* FileDeletionException (Exception) - upon attempt deleting a file (if it's exists!) and result are false.
+* FileCreationException (Exception) - upon attempt creating a file.
 * FormatException (Exception) - upon formatting appears exception.
 * FormatRuntimeException (RuntimeException) - upon formatting appears uncaught exception.
 * ClassDecompileException (RuntimeException) - upon decompiling class gets some exceptions.
+* ClassLoaderException (Exception) - upon loading classes from class paths.
 
 ## Current completion
 

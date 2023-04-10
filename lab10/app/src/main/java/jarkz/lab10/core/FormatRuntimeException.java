@@ -1,5 +1,8 @@
 package jarkz.lab10.core;
 
+/**
+ * Throws when many errors occurred in attempting to safely interrupt thread.
+ */
 public class FormatRuntimeException extends RuntimeException {
 
 	public FormatRuntimeException() {

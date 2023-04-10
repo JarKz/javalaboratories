@@ -1,5 +1,8 @@
 package jarkz.lab10.core;
 
+/**
+ * Signals that the files can't delete by some reason.
+ */
 public class FileDeletionException extends Exception {
 
 	public FileDeletionException() {
