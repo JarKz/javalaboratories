@@ -9,7 +9,14 @@ import jarkz.lab2.utils.Generator;
 public class App {
 
     public static void main(String[] args) {
-		var integerMatrix = Generator.generateMatrix(6, 20);
+		int size = 6;
+		try {
+			String firstArg = args[0];
+			size = Integer.parseInt(firstArg);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		var integerMatrix = Generator.generateMatrix(size, 20);
 		System.out.println(integerMatrix.toString());
 		// integerMatrix.toTransport();
 		// System.out.println(integerMatrix.toString());

@@ -18,5 +18,4 @@ public class SentenceTest {
 		Sentence sentence = new Sentence(sentenceText);
 		Assert.assertEquals(sentence.getFormula(), "%s, %s...");
 	}
-
 }

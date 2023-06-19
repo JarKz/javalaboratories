@@ -12,10 +12,6 @@ public class BushPlant implements Plant {
 	private String name;
 	private Specie specie;
 
-	private Temperature temperature;
-	private WaterBalance waterBalance;
-	private Light light;
-
 	private LifeCycle lifeCycle;
 	private boolean died;
 
@@ -34,6 +30,7 @@ public class BushPlant implements Plant {
 		name = new String(bushPlant.getName());
 		specie = bushPlant.getSpecie();
 		lifeCycle = bushPlant.lifeCycle;
+		died = bushPlant.died;
 	}
 
 	@Override
@@ -52,21 +49,6 @@ public class BushPlant implements Plant {
 	}
 
 	@Override
-	public Temperature getTemperature() {
-		return temperature;
-	}
-
-	@Override
-	public WaterBalance getWaterBalance() {
-		return waterBalance;
-	}
-
-	@Override
-	public Light getLight() {
-		return light;
-	}
-
-	@Override
 	public void growUp(Temperature temperature, Light light, WaterBalance waterBalance, Soil soil) {
 		if (!died && specie.getInfoAboutTemperature().withinRange(temperature)
 			&& specie.getInfoAboutLight().withinRange(light)
@@ -80,6 +62,11 @@ public class BushPlant implements Plant {
 		} else {
 			died = true;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "BushPlant[name=" + name + ", specie=" + specie + ", lifeCycle=" + lifeCycle + ", died=" + died + "]";
 	}
 
 	public boolean isDied(){

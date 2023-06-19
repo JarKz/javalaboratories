@@ -1,4 +1,4 @@
-#ignore bulid folder
+#ignore build folder
 build
 
 #ignore gralde folder
@@ -10,8 +10,12 @@ build
 .settings
 .vim
 
+#IDE files
+.classpath
+.project
+
 #ignore system files
 .DS_Store
 
 #ignore build files
-bin/
+bin

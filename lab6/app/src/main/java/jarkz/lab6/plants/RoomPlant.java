@@ -13,10 +13,6 @@ public class RoomPlant implements Plant {
 	private String name;
 	private Specie specie;
 
-	private Temperature temperature;
-	private WaterBalance waterBalance;
-	private Light light;
-
 	private LifeCycle lifeCycle;
 	private boolean died;
 
@@ -35,6 +31,7 @@ public class RoomPlant implements Plant {
 		name = new String(roomPlant.getName());
 		specie = roomPlant.getSpecie();
 		lifeCycle = roomPlant.lifeCycle;
+		died = roomPlant.died;
 	}
 
 	@Override
@@ -53,21 +50,6 @@ public class RoomPlant implements Plant {
 	}
 
 	@Override
-	public Temperature getTemperature() {
-		return temperature;
-	}
-
-	@Override
-	public WaterBalance getWaterBalance() {
-		return waterBalance;
-	}
-
-	@Override
-	public Light getLight() {
-		return light;
-	}
-
-	@Override
 	public void growUp(Temperature temperature, Light light, WaterBalance waterBalance, Soil soil) {
 		if (!died && specie.getInfoAboutTemperature().withinRange(temperature)
 			&& specie.getInfoAboutLight().withinRange(light)
@@ -81,6 +63,11 @@ public class RoomPlant implements Plant {
 		} else {
 			died = true;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "RoomPlant[name=" + name + ", specie=" + specie + ", lifeCycle=" + lifeCycle + ", died=" + died + "]";
 	}
 
 	public boolean isDied(){

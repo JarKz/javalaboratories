@@ -3,17 +3,19 @@ package jarkz.lab6.types;
 public class Soil {
 
 	public enum Type {
-		CLAY(0.6f, 0.6f),
-		SANDY(0.1f, 0.3f),
-		CALCAREOUS(0.4f, 0.6f),
-		PEAT(0.3f, 0.3f);
+		CLAY(0.6f, 0.6f, 0.0f),
+		SANDY(0.1f, 0.3f, 0.6f),
+		CALCAREOUS(0.4f, 0.6f, 0.5f),
+		PEAT(0.3f, 0.3f, 0.4f);
 
 		private float waterRatio;
 		private float nutrientRatio;
+		private float loseness;
 
-		private Type(float waterRatio, float nutrientRatio) {
+		private Type(float waterRatio, float nutrientRatio, float loseness) {
 			this.waterRatio = waterRatio;
 			this.nutrientRatio = nutrientRatio;
+			this.loseness = loseness;;
 		}
 
 		public float getWaterRatio(){
@@ -23,10 +25,13 @@ public class Soil {
 		public float getNutrientRatio(){
 			return nutrientRatio;
 		}
+
+		public float getLoseness(){
+			return loseness;
+		}
 	}
 
 	private Type type;
-	private float loseness;
 
 	public Soil(Soil.Type type){
 		if (type == null)
@@ -39,7 +44,7 @@ public class Soil {
 	}
 
 	public float getLoseness() {
-		return loseness;
+		return type.loseness;
 	}
 
 	/**
@@ -49,6 +54,11 @@ public class Soil {
 		if (Float.compare(looseness, 0f) < 0 || Float.compare(1f, looseness) < 0){
 			throw new IllegalArgumentException("Loseness must be between 0 and 1 inclusive.");
 		}
-		this.loseness = looseness;
+		this.type.loseness = looseness;
+	}
+
+	@Override
+	public String toString() {
+		return "Soil[type=" + type + ", loseness=" + type.loseness + "]";
 	}
 }

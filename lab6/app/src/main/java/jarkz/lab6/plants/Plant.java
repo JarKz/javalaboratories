@@ -11,10 +11,6 @@ public interface Plant extends Cloneable {
 
 	public Specie getSpecie();
 
-	public Temperature getTemperature();
-	public Light getLight();
-	public WaterBalance getWaterBalance();
-
 	public void growUp(Temperature temperature, Light light, WaterBalance waterBalance, Soil soil);
 
 	public boolean isDied();

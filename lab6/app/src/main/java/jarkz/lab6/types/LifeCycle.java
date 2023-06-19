@@ -35,4 +35,9 @@ public class LifeCycle {
 	public int currentDay(){
 		return currentDay;
 	}
+
+	@Override
+	public String toString() {
+		return "LifeCycle[maxDays=" + maxDays + ", currentDay=" + currentDay + ", ended=" + ended + "]";
+	}
 }

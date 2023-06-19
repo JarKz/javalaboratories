@@ -13,6 +13,11 @@ public class Temperature implements Measurement{
 	private int value;
 	private MeasurementType type;
 
+	public Temperature(int value, MeasurementType type){
+		this.value = value;
+		this.type = type;
+	}
+
 	public MeasurementType getType() {
 		return type;
 	}
@@ -64,9 +69,9 @@ public class Temperature implements Measurement{
 	public int compareTo(Object o){
 		if (o == null)
 			throw new NullPointerException("Object must be not null.");
-		else if (!(o instanceof Temperature t))
-			throw new ClassCastException("Object must be instanse of WaterBalance class.");
-		if (type != t.getType())
+		if (!(o instanceof Temperature t))
+			throw new ClassCastException("Object must be instance of WaterBalance class.");
+		if (type != t.type)
 			t.setMeasurementType(type);
 		if (value > t.value)
 			return 1;
@@ -74,5 +79,10 @@ public class Temperature implements Measurement{
 			return -1;
 		else
 			return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Temperature[value=" + value + ", type=" + type + "]";
 	}
 }

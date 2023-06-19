@@ -17,12 +17,11 @@ public class Pot {
 	private WaterBalance waterBalance;
 
 	public Pot(
-		Plant plant,
-		Soil soil,
-		Temperature temperature,
-		Light light,
-		WaterBalance waterBalance
-		){
+			Plant plant,
+			Soil soil,
+			Temperature temperature,
+			Light light,
+			WaterBalance waterBalance) {
 		setPlant(plant);
 		setSoil(soil);
 		setTemperature(temperature);
@@ -80,11 +79,17 @@ public class Pot {
 		this.waterBalance = waterBalance;
 	}
 
-	public void digOutPlant(){
+	public void digOutPlant() {
 		plant = null;
 	}
 
-	public boolean isEmpty(){
+	public boolean isEmpty() {
 		return plant == null;
+	}
+
+	@Override
+	public String toString() {
+		return "Pot[plant=" + plant + ", soil=" + soil + ", light=" + light + ", temperature=" + temperature
+				+ ", waterBalance=" + waterBalance + "]";
 	}
 }

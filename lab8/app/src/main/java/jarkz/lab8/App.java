@@ -17,7 +17,7 @@ public class App {
 			Parser parser = new Parser(resourceName);
 			Text text = parser.parseResource();
 			Worker worker = new Worker(text);
-			worker.printWordsWithSize(4);
+			worker.printWordsWithSize(5);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

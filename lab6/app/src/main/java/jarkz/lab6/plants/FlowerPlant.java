@@ -13,10 +13,6 @@ public class FlowerPlant implements Plant {
 	private String name;
 	private Specie specie;
 
-	private Temperature temperature;
-	private WaterBalance waterBalance;
-	private Light light;
-
 	private LifeCycle lifeCycle;
 	private boolean died;
 
@@ -35,6 +31,7 @@ public class FlowerPlant implements Plant {
 		name = new String(flowerPlant.getName());
 		specie = flowerPlant.getSpecie();
 		lifeCycle = flowerPlant.lifeCycle;
+		died = flowerPlant.died;
 	}
 
 	@Override
@@ -52,20 +49,6 @@ public class FlowerPlant implements Plant {
 		return specie;
 	}
 
-	@Override
-	public Temperature getTemperature() {
-		return temperature;
-	}
-
-	@Override
-	public WaterBalance getWaterBalance() {
-		return waterBalance;
-	}
-
-	@Override
-	public Light getLight() {
-		return light;
-	}
 
 	@Override
 	public void growUp(Temperature temperature, Light light, WaterBalance waterBalance, Soil soil) {
@@ -81,6 +64,11 @@ public class FlowerPlant implements Plant {
 		} else {
 			died = true;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "FlowerPlant[name=" + name + ", specie=" + specie + ", lifeCycle=" + lifeCycle + ", died=" + died + "]";
 	}
 
 	public boolean isDied(){

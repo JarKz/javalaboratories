@@ -27,9 +27,11 @@ public class Range<T extends Measurement> {
 	}
 
 	public boolean withinRange(T externalSource){
-		if (low.compareTo(externalSource) <= 0 && high.compareTo(externalSource) >= 0){
-			return true;
-		}
-		return false;
+		return low.compareTo(externalSource) <= 0 && high.compareTo(externalSource) >= 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Range[low=" + low + ", high=" + high + "]";
 	}
 }

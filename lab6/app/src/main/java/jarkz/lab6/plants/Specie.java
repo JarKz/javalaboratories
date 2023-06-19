@@ -24,6 +24,10 @@ public class Specie {
 
 	private Specie(){}
 
+	public static Builder newBuilder(){
+		return new Specie().new Builder();
+	}
+
 	public class Builder{
 		private Specie instance;
 
@@ -203,4 +207,10 @@ public class Specie {
 				&& lifeCycle.equals(s.lifeCycle);
 	}
 
+	@Override
+	public String toString() {
+		return "Specie[name=" + name + ", type=" + type + ", soil=" + soil + ", zone=" + zone + ", temperatureRange="
+				+ temperatureRange + ", lightRange=" + lightRange + ", waterBalanceRange=" + waterBalanceRange
+				+ ", lifeCycle=" + lifeCycle + "]";
+	}
 }

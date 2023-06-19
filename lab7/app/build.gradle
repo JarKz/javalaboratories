@@ -34,3 +34,9 @@ jar {
 		attributes('Main-Class' : 'jarkz.lab7.App')
 	}
 }
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(19)
+	}
+}

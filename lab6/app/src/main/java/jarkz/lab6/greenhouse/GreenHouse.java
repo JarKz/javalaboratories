@@ -1,6 +1,7 @@
 package jarkz.lab6.greenhouse;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ public class GreenHouse {
 
 	public GreenHouse(int totalPlaces) {
 		this.totalPlaces = totalPlaces;
+		availableSpecies = new HashSet<>();
 	}
 
 	public void buyNewSpecie(Specie newSpecie) {
@@ -52,16 +54,16 @@ public class GreenHouse {
 		Stream<Pot> placesStream = places.stream().filter(p -> p.isEmpty());
 		if (placesStream.count() > 0)
 			pot = placesStream.findFirst().orElse(null);
-			//we don't need null check because important check are above
+		// we don't need null check because important check are above
 		else if (places.size() <= totalPlaces)
 			pot = new Pot(newPlant, soil, agrofactors.getTemperature(), agrofactors.getLight(),
-				agrofactors.getWaterBalance());
+					agrofactors.getWaterBalance());
 		else
 			throw new IllegalStateException("Greenhouse is full.");
 		places.add(pot);
 	}
 
-	private Plant createPlant(String name, String specieName){
+	private Plant createPlant(String name, String specieName) {
 		Plant newPlant;
 		Specie specie = checkAndGetSpecie(specieName);
 		PlantType type = specie.getType();
@@ -69,31 +71,35 @@ public class GreenHouse {
 			case BUSH -> newPlant = new BushPlant(name, specie);
 			case ROOM -> newPlant = new RoomPlant(name, specie);
 			case FLOWER -> newPlant = new FlowerPlant(name, specie);
-			default -> throw new IllegalArgumentException("Unknow plant type.");
+			default -> throw new IllegalArgumentException("Unknown plant type.");
 		}
 		return newPlant;
 	}
 
-	public List<Plant> getPlants(){
+	public List<Plant> getPlants() {
 		return places.stream().map(p -> copyInformationAboutPant(p.getPlant())).collect(Collectors.toList());
 	}
 
-	public List<Plant> getPlantWithSpecificSpecie(String specieName){
+	public List<Pot> getBusyPots() {
+		return places.stream().filter(p -> !p.isEmpty()).toList();
+	}
+
+	public List<Plant> getPlantWithSpecificSpecie(String specieName) {
 		Specie specie = checkAndGetSpecie(specieName);
 		return places.stream()
-			.filter(p -> p.getPlant().getSpecie().equals(specie))
-			.map(p -> copyInformationAboutPant(p.getPlant()))
-			.collect(Collectors.toList());
+				.filter(p -> p.getPlant().getSpecie().equals(specie))
+				.map(p -> copyInformationAboutPant(p.getPlant()))
+				.collect(Collectors.toList());
 	}
 
-	public List<Plant> getPlatnWithSpecificZone(ClimatZone zone){
+	public List<Plant> getPlatnWithSpecificZone(ClimatZone zone) {
 		return places.stream()
-			.map(p -> p.getPlant())
-			.filter(p -> p.getSpecie().getClimatZone() == zone)
-			.collect(Collectors.toList());
+				.map(p -> p.getPlant())
+				.filter(p -> p.getSpecie().getClimatZone() == zone)
+				.collect(Collectors.toList());
 	}
 
-	private Specie checkAndGetSpecie(String specieName){
+	private Specie checkAndGetSpecie(String specieName) {
 		Specie specie = availableSpecies.stream()
 				.filter(s -> s.getName().equals(specieName))
 				.findFirst()
@@ -103,38 +109,38 @@ public class GreenHouse {
 		return specie;
 	}
 
-	private Plant copyInformationAboutPant(Plant plant){
+	private Plant copyInformationAboutPant(Plant plant) {
 		Plant newPlant;
 		PlantType type = plant.getSpecie().getType();
 		switch (type) {
 			case BUSH -> newPlant = new BushPlant(plant);
 			case ROOM -> newPlant = new RoomPlant(plant);
 			case FLOWER -> newPlant = new FlowerPlant(plant);
-			default -> throw new IllegalArgumentException("Unknow plant type.");
+			default -> throw new IllegalArgumentException("Unknownn plant type.");
 		}
 		return newPlant;
 	}
 
-	public void digOutFromGreenHouse(String specieName){
+	public void digOutFromGreenHouse(String specieName) {
 		if (specieName == null)
 			throw new NullPointerException("Specie name must be not null.");
 		else if (specieName.isEmpty() || specieName.isBlank())
 			throw new IllegalArgumentException("Specie name must be not empty or blank.");
 
 		Specie specie = availableSpecies.stream()
-			.filter(as -> as.getName().equals(specieName))
-			.findAny()
-			.orElseThrow(() -> new IllegalArgumentException("Name not found"));
-		if (availableSpecies.remove(specie)){
+				.filter(as -> as.getName().equals(specieName))
+				.findAny()
+				.orElseThrow(() -> new IllegalArgumentException("Name not found!!"));
+		if (availableSpecies.remove(specie)) {
 			places.forEach(p -> {
-				if (p.getPlant().getSpecie().equals(specie)){
+				if (p.getPlant().getSpecie().equals(specie)) {
 					p.digOutPlant();
 				}
 			});
 		}
 	}
 
-	public void nextDay(){
+	public void nextDay() {
 		places.forEach(p -> {
 			p.getPlant().growUp(p.getTemperature(), p.getLight(), p.getWaterBalance(), p.getSoil());
 		});

@@ -24,7 +24,7 @@ public class App {
 		}
 
 		int averageBadGrade = 5;
-		LOGGER.info("Already setted bad average grade: " + averageBadGrade);
+		LOGGER.info("Already set bad average grade: " + averageBadGrade);
 		List<Abiturient> badGradeAbiturients = Filterer.filterByAvgBadGrade(averageBadGrade, list);
 		LOGGER.info("Abiturents who have bad grades: " + badGradeAbiturients.toString());
 		LOGGER.info("Total abiturenst: " + badGradeAbiturients.size());
@@ -37,14 +37,14 @@ public class App {
 		filteredAbiturents.forEach(fa -> LOGGER.info("Grade of " + fa.getFirstName() + " are " + fa.getGrades().getGradeSum()));
 
 		int count = 2;
-		LOGGER.info("Already setted count of best abiturients: " + count);
+		LOGGER.info("Already set count of best abiturients: " + count);
 		List<Abiturient> bestAbiturients = Filterer.sortByGradesAndGet(count, list);
 		LOGGER.info("Best abiturients: " + bestAbiturients.toString());
 		LOGGER.info("Total abiturents: " + bestAbiturients.size());
 		bestAbiturients.forEach(ba -> LOGGER.info("Grade of " + ba.getFirstName() + " are " + ba.getGrades().getGradeSum()));
 
 		int halfEntryGradeSum = 50;
-		LOGGER.info("Already setted half entry grade sum: " + halfEntryGradeSum);
+		LOGGER.info("Already set half entry grade sum: " + halfEntryGradeSum);
 		List<Abiturient> abiturientsWhoPassedHalfEntryGradeSum = Filterer.sortByGradesAndGetWithMinimalGradeSum(halfEntryGradeSum, list);
 		LOGGER.info("Abiturients that passed half entry grade sum: " + abiturientsWhoPassedHalfEntryGradeSum.toString());
 		LOGGER.info("Total abiturents: " + abiturientsWhoPassedHalfEntryGradeSum.size());
